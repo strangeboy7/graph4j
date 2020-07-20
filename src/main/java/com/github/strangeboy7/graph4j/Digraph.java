@@ -7,6 +7,7 @@ import java.util.TreeSet;
 
 /**
  * directed graph
+ *
  * @param <T> vertex type
  */
 public class Digraph<T> extends CommonGraph<T> {
@@ -18,8 +19,14 @@ public class Digraph<T> extends CommonGraph<T> {
         adj.get(t1).add(t2);
     }
 
+    @Override
+    public void removeEdge(T from, T to) {
+        adj.getOrDefault(from, Collections.emptySet()).remove(to);
+    }
+
     /**
      * the graph with reverse direction
+     *
      * @return
      */
     public Digraph<T> reverse() {
@@ -34,6 +41,7 @@ public class Digraph<T> extends CommonGraph<T> {
 
     /**
      * whether the graph has cycle
+     *
      * @return
      */
     public boolean hasCycle() {
@@ -43,6 +51,7 @@ public class Digraph<T> extends CommonGraph<T> {
 
     /**
      * the cycle of the graph
+     *
      * @return
      */
     public List<T> cycle() {

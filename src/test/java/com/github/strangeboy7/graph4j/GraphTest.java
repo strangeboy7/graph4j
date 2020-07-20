@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.List;
 import java.util.Scanner;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class GraphTest {
     public void testInit() throws IOException {
@@ -39,5 +39,23 @@ public class GraphTest {
         System.out.println(path);
     }
 
+    @Test
+    public void testRemoveEdge() {
+        Graph<Integer> graph = initGraph("tinyCG.txt");
+        graph.removeEdge(2, 3);
+        assertFalse(graph.adj(2).contains(3));
 
+        graph = initGraph("tinyCG.txt");
+        graph.removeEdge(7, 8);
+    }
+
+    @Test
+    public void testRemoveVertex() {
+        Graph<Integer> graph = initGraph("tinyCG.txt");
+        graph.removeVertex(2);
+        assertTrue(graph.adj(2).isEmpty());
+        for (Integer v : graph.vertex()) {
+            assertFalse(graph.adj(v).contains(2));
+        }
+    }
 }

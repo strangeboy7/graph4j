@@ -19,6 +19,25 @@ public interface IGraph<T> {
     void addEdge(T from, T to);
 
     /**
+     * add vertex to graph
+     * @param v
+     */
+    void addVertex(T v);
+
+    /**
+     * remove edge from graph
+     * @param from
+     * @param to
+     */
+    void removeEdge(T from, T to);
+
+    /**
+     * remove vertex from graph
+     * @param t
+     */
+    void removeVertex(T t);
+
+    /**
      * @return all the vertexes
      */
     Set<T> vertex();

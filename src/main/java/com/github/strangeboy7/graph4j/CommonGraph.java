@@ -1,9 +1,6 @@
 package com.github.strangeboy7.graph4j;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
@@ -17,6 +14,17 @@ abstract class CommonGraph<T> implements IGraph<T> {
 
     public Set<T> adj(T t) {
         return new HashSet<>(adj.getOrDefault(t, Collections.emptySet()));
+    }
+
+    @Override
+    public void addVertex(T v) {
+        adj.putIfAbsent(v, Collections.synchronizedSet(new TreeSet<>()));
+    }
+
+    @Override
+    public void removeVertex(T t) {
+        adj.remove(t);
+        adj.values().forEach(x -> x.remove(t));
     }
 
     public Set<T> getConnected(T t) {

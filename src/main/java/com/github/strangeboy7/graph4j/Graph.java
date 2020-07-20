@@ -1,15 +1,13 @@
 package com.github.strangeboy7.graph4j;
 
 import java.util.Collections;
-import java.util.List;
-import java.util.Set;
 import java.util.TreeSet;
-import java.util.stream.Collectors;
 
 /**
  * Undirected graph
- * @see Digraph
+ *
  * @param <T>
+ * @see Digraph
  */
 public class Graph<T> extends CommonGraph<T> implements IGraph<T> {
 
@@ -21,6 +19,12 @@ public class Graph<T> extends CommonGraph<T> implements IGraph<T> {
         adj.get(t2).add(t1);
     }
 
+
+    @Override
+    public void removeEdge(T from, T to) {
+        adj.getOrDefault(from, Collections.emptySet()).remove(to);
+        adj.getOrDefault(to, Collections.emptySet()).remove(from);
+    }
 
 
 }
