@@ -9,6 +9,7 @@ Using CC class to split connections components.
 Using Digraph class.
 Provided methods for detecting Vertexes connections.
 Strongly connections components using KosarajuSCC.
+Topological using Topological class.
 
 ## Edge weighted undirected graph
 Using EdgeWeightedGraph and Edge to calculate minimum spanning tree.
