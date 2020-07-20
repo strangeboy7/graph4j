@@ -2,6 +2,11 @@ package com.github.strangeboy7.graph4j;
 
 import java.util.*;
 
+/**
+ * directed graph cycle detective helper class
+ * used in {@link Digraph#hasCycle()} and {@link Digraph#cycle()}
+ * @param <T>
+ */
 class DigraphCycle<T> {
     private Map<T, Boolean> marked = new HashMap<>();
     private Map<T, Boolean> onStack = new HashMap<>();

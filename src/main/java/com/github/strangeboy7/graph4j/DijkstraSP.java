@@ -2,6 +2,13 @@ package com.github.strangeboy7.graph4j;
 
 import java.util.*;
 
+/**
+ * Dijkstra shortest path algorithm
+ * the start vertex is set in constructor parameter
+ * using {@link DijkstraSP#distTo(T t)} to get distance,
+ * or {@link DijkstraSP#pathTo(T t)} to get the path
+ * @param <T>
+ */
 public class DijkstraSP<T> {
     private final Map<T, DirectedEdge<T>> edgeTo;
     private final Map<T, Double> distTo;
@@ -29,15 +36,30 @@ public class DijkstraSP<T> {
         }
     }
 
+    /**
+     * distance to the vertex (start vertex set in constructor)
+     * @param v vertex
+     * @return distance
+     */
     public double distTo(T v) {
         return distTo.get(v);
     }
 
-    public boolean hasPathTo(int v) {
+    /**
+     * has path to the vertex (start vertex set in constructor)
+     * @param v vertex
+     * @return has path to the vertex
+     */
+    public boolean hasPathTo(T v) {
         return distTo.get(v) < Double.POSITIVE_INFINITY;
     }
 
-    public List<DirectedEdge<T>> pathTo(int v) {
+    /**
+     * path to the vertex (start vertex set in constructor)
+     * @param v vertex
+     * @return path to the vertex
+     */
+    public List<DirectedEdge<T>> pathTo(T v) {
         if (!hasPathTo(v)) return null;
         List<DirectedEdge<T>> path = new LinkedList<>();
         for (DirectedEdge<T> e = edgeTo.get(v); e != null; e = edgeTo.get(e.from())) {

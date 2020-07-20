@@ -19,26 +19,13 @@ abstract class CommonGraph<T> implements IGraph<T> {
         return new HashSet<>(adj.getOrDefault(t, Collections.emptySet()));
     }
 
-    public int edge() {
-        return adj.values().stream().mapToInt(Set::size).sum() / 2;
-    }
-
-    public int degree(T t) {
-        Set<T> list = adj.get(t);
-        return list == null ? 0 : list.size();
-    }
-
-    public int maxDegree() {
-        return adj.keySet().stream().map(this::degree).max(Integer::compareTo).orElse(0);
-    }
-
     public Set<T> getConnected(T t) {
         ISearch<T> s = new DeepFirstSearch<T>(this, t);
         return vertex().stream().filter(s::marked).collect(Collectors.toSet());
     }
 
-    public boolean connected(T t1, T t2) {
-        return getConnected(t1).contains(t2);
+    public boolean connected(T from, T to) {
+        return getConnected(from).contains(to);
     }
 
     public List<T> pathTo(T from, T to) {

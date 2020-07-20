@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * topological for the {@link Digraph}
+ * @param <T> vertex type
+ */
 public class Topological<T> {
     private List<T> order = new ArrayList<T>();
 

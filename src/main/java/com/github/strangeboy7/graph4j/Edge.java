@@ -1,17 +1,23 @@
 package com.github.strangeboy7.graph4j;
 
+/**
+ * undirected edge with weight
+ * very simple with two vertexes and weight of the edge
+ * @see EdgeWeightedGraph
+ * @param <T>
+ */
 public class Edge<T> implements Comparable<Edge<T>>{
     private final T v;
     private final T w;
-    private final Comparable weight;
+    private final double weight;
 
-    public Edge(T v, T w, Comparable weight) {
+    public Edge(T v, T w, double weight) {
         this.v = v;
         this.w = w;
         this.weight =weight;
     }
 
-    public Comparable weight() {
+    public double weight() {
         return weight;
     }
 
@@ -27,7 +33,7 @@ public class Edge<T> implements Comparable<Edge<T>>{
 
     @Override
     public int compareTo(Edge e) {
-        return this.weight.compareTo(e.weight);
+        return Double.compare(weight, e.weight);
     }
 
     @Override

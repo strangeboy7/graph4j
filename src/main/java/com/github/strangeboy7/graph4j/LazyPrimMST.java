@@ -2,6 +2,11 @@ package com.github.strangeboy7.graph4j;
 
 import java.util.*;
 
+/**
+ * minimum spanning tree algorithm
+ * @see PrimMST
+ * @param <T>
+ */
 public class LazyPrimMST<T> {
     private final Map<T, Boolean> marked = new HashMap<>();
     private final Queue<Edge<T>> mst = new ArrayDeque<>();

@@ -26,14 +26,6 @@ public class GraphTest {
     }
 
     @Test
-    public void testMaxDegree() {
-        Graph<Integer> graph = initGraph("tinyG.txt");
-        assertEquals(4, graph.maxDegree());
-        assertEquals(13, graph.vertex());
-        assertEquals(13, graph.edge());
-    }
-
-    @Test
     public void testConnection() {
         Graph<Integer> graph = initGraph("tinyG.txt");
 //        graph.getConnected(10).forEach(System.out::println);

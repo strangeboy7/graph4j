@@ -3,22 +3,59 @@ package com.github.strangeboy7.graph4j;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * graph interface
+ * @see Graph
+ * @see Digraph
+ * @param <T> graphic vertex type
+ */
 public interface IGraph<T> {
-    void addEdge(T t1, T t2);
+    /**
+     * add edge
+     * the parameter order is important in Digraph
+     * @param from
+     * @param to
+     */
+    void addEdge(T from, T to);
 
+    /**
+     * @return all the vertexes
+     */
     Set<T> vertex();
 
+    /**
+     * @param t vertex
+     * @return the adjective vertexes of the given vertex
+     */
     Set<T> adj(T t);
 
-    int edge();
-
-    int degree(T t);
-
-    int maxDegree();
-
+    /**
+     * all connected vertexes
+     * @param t the given vertex
+     * @return all connected vertexes
+     *
+     * @see CC
+     * @see KosarajuSCC
+     */
     Set<T> getConnected(T t);
 
-    boolean connected(T t1, T t2);
+    /**
+     * whether the 'from' vertex can reach to 'to' vertex
+     * @param from start vertex
+     * @param to target vertex
+     * @return
+     * @see CC
+     * @see KosarajuSCC
+     */
+    boolean connected(T from, T to);
 
+    /**
+     * the path of the 'from' to 'to' vertex
+     * @param from start vertex
+     * @param to target vertex
+     * @return
+     * @see CC
+     * @see KosarajuSCC
+     */
     List<T> pathTo(T from, T to);
 }

@@ -1,5 +1,11 @@
 package com.github.strangeboy7.graph4j;
 
+/**
+ * directed edge with weight
+ * very simple with from, to vertexes and weight of the edge
+ * @see EdgeWeightedDigraph
+ * @param <T>
+ */
 public class DirectedEdge<T> implements Comparable<DirectedEdge<T>> {
     private T from;
     private T to;

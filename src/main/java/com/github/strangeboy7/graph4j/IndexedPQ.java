@@ -4,6 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 
+/**
+ * indexed priority queue
+ * @param <T> index type
+ * @param <I> item in priority queue
+ */
 class IndexedPQ<T, I extends Comparable<I>> {
     private final Map<T, I> map = new HashMap<>();
     private PriorityQueue<I> pq = new PriorityQueue<>();
