@@ -13,6 +13,8 @@ public class LazyPrimMST<T> {
     private final PriorityQueue<Edge<T>> pq = new PriorityQueue<>();
 
     public LazyPrimMST(EdgeWeightedGraph<T> graph) {
+        Objects.requireNonNull(graph);
+
         if (!isConnected(graph)) {
             throw new IllegalArgumentException("graph must be connected");
         }

@@ -8,6 +8,7 @@ class DeepFirstSearchOrder<T> implements ISearchOrder<T> {
     private Map<T, Boolean> marked = new HashMap<>();
 
     public DeepFirstSearchOrder(IGraph<T> graph) {
+        Objects.requireNonNull(graph);
         graph.vertex().forEach(x -> marked.putIfAbsent(x, false));
         for (T v : graph.vertex()) {
             if (!marked.get(v)) {

@@ -14,6 +14,7 @@ class IndexedPQ<T, I extends Comparable<I>> {
     private PriorityQueue<I> pq = new PriorityQueue<>();
 
     public void insert(T index, I item) {
+        if (index == null || item == null) return;
         map.put(index, item);
         if (!pq.contains(item)) {
             pq.add(item);
@@ -21,6 +22,7 @@ class IndexedPQ<T, I extends Comparable<I>> {
     }
 
     public void change(T index, I item) {
+        if (index == null || item == null) return;
         if (map.containsKey(index)) {
             pq.remove(map.get(index));
         }

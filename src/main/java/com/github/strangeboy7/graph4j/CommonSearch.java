@@ -16,13 +16,14 @@ abstract class CommonSearch<T> implements ISearch<T> {
 
     @Override
     public List<T> pathTo(T t) {
-        Stack<T> stack = new Stack<>();
+        Objects.requireNonNull(t);
+        List<T> rs = new ArrayList<>();
         for (T i = t; edgeTo.containsKey(i); i = edgeTo.get(i)) {
-            stack.push(i);
+            rs.add(i);
         }
-        stack.push(start);
-        Collections.reverse(stack);
-        return stack;
+        rs.add(start);
+        Collections.reverse(rs);
+        return rs;
     }
 
     @Override

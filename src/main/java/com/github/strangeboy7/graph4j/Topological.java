@@ -3,6 +3,7 @@ package com.github.strangeboy7.graph4j;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * topological for the {@link Digraph}
@@ -12,6 +13,8 @@ public class Topological<T> {
     private List<T> order = new ArrayList<T>();
 
     public Topological(Digraph<T> digraph) {
+        Objects.requireNonNull(digraph);
+
         DigraphCycle<T> dc = new DigraphCycle<>(digraph);
         if (!dc.hasCycle()) {
             DeepFirstSearchOrder<T> dfs = new DeepFirstSearchOrder<>(digraph);

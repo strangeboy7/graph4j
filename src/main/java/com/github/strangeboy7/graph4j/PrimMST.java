@@ -13,6 +13,8 @@ public class PrimMST<T> {
     IndexedPQ<T, Edge<T>> pq = new IndexedPQ<>();
 
     public PrimMST(EdgeWeightedGraph<T> graph) {
+        Objects.requireNonNull(graph);
+
         if (!isConnected(graph)) {
             throw new IllegalArgumentException("graph must be connected");
         }

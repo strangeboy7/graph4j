@@ -1,12 +1,11 @@
 package com.github.strangeboy7.graph4j;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 class DeepFirstSearch<T> extends CommonSearch<T> {
     public DeepFirstSearch(IGraph<T> g, T t) {
+        Objects.requireNonNull(g);
+        Objects.requireNonNull(t);
         marked = new HashMap<>(g.vertex().size());
         start = t;
         g.vertex().forEach(x -> marked.putIfAbsent(x, false));

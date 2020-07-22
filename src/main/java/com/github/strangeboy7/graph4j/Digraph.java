@@ -1,9 +1,6 @@
 package com.github.strangeboy7.graph4j;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * directed graph
@@ -14,6 +11,7 @@ public class Digraph<T> extends CommonGraph<T> {
 
     @Override
     public void addEdge(T t1, T t2) {
+        if (t1 == null || t2 == null) return;
         adj.putIfAbsent(t1, Collections.synchronizedSet(new TreeSet<>()));
         adj.putIfAbsent(t2, Collections.synchronizedSet(new TreeSet<>()));
         adj.get(t1).add(t2);
@@ -21,6 +19,7 @@ public class Digraph<T> extends CommonGraph<T> {
 
     @Override
     public void removeEdge(T from, T to) {
+        if (from == null || to == null) return;
         adj.getOrDefault(from, Collections.emptySet()).remove(to);
     }
 

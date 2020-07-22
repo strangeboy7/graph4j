@@ -16,6 +16,8 @@ public class EdgeWeightedGraph<T> {
     }
 
     public void addEdge(Edge<T> e) {
+        Objects.requireNonNull(e);
+
         T v = e.either();
         T w = e.other(v);
         adj.putIfAbsent(v, new TreeSet<>());
@@ -30,7 +32,7 @@ public class EdgeWeightedGraph<T> {
     }
 
     public Set<Edge<T>> adj(T v) {
-        return new HashSet<>(adj.get(v));
+        return new HashSet<>(adj.getOrDefault(v, Collections.emptySet()));
     }
 
     public Set<Edge<T>> edges() {

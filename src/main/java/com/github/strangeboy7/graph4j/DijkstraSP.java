@@ -15,6 +15,9 @@ public class DijkstraSP<T> {
     private final IndexedPQ<T, Double> pq;
 
     public DijkstraSP(EdgeWeightedDigraph<T> graph, T s) {
+        Objects.requireNonNull(graph);
+        Objects.requireNonNull(s);
+
         edgeTo = new HashMap<>();
         distTo = new HashMap<>();
         graph.vertex().forEach(x -> distTo.putIfAbsent(x, Double.POSITIVE_INFINITY));
@@ -39,10 +42,10 @@ public class DijkstraSP<T> {
     /**
      * distance to the vertex (start vertex set in constructor)
      * @param v vertex
-     * @return distance
+     * @return distance if v is not in the graph, return Double.POSITIVE_INFINITY
      */
     public double distTo(T v) {
-        return distTo.get(v);
+        return distTo.getOrDefault(v, Double.POSITIVE_INFINITY);
     }
 
     /**
@@ -60,7 +63,7 @@ public class DijkstraSP<T> {
      * @return path to the vertex
      */
     public List<DirectedEdge<T>> pathTo(T v) {
-        if (!hasPathTo(v)) return null;
+        if (!hasPathTo(v)) return Collections.emptyList();
         List<DirectedEdge<T>> path = new LinkedList<>();
         for (DirectedEdge<T> e = edgeTo.get(v); e != null; e = edgeTo.get(e.from())) {
             path.add(e);

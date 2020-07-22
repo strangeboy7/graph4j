@@ -2,6 +2,7 @@ package com.github.strangeboy7.graph4j;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Connected component calculation for Graph only.
@@ -18,6 +19,7 @@ public class CC<T> {
     private int count;
 
     public CC(Graph<T> graph) {
+        Objects.requireNonNull(graph);
         marked = new HashMap<>(graph.vertex().size());
         id = new HashMap<>(graph.vertex().size());
         graph.vertex().forEach(x -> marked.putIfAbsent(x, false));

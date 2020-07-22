@@ -1,5 +1,5 @@
 # graph4j
-basic graph algorithm using java.
+basic graph algorithm using java (1.8+).
 ## Undirected graph
 Using Graph class.
 Provided methods for detecting Vertexes connections.

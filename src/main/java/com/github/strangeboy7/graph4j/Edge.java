@@ -1,5 +1,7 @@
 package com.github.strangeboy7.graph4j;
 
+import java.util.Objects;
+
 /**
  * undirected edge with weight
  * very simple with two vertexes and weight of the edge
@@ -12,6 +14,9 @@ public class Edge<T> implements Comparable<Edge<T>>{
     private final double weight;
 
     public Edge(T v, T w, double weight) {
+        Objects.requireNonNull(v);
+        Objects.requireNonNull(w);
+
         this.v = v;
         this.w = w;
         this.weight =weight;

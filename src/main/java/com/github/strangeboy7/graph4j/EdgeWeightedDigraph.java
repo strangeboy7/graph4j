@@ -16,6 +16,8 @@ public class EdgeWeightedDigraph<T> {
     }
 
     public void addEdge(DirectedEdge<T> e) {
+        Objects.requireNonNull(e);
+
         T v = e.from();
         T w = e.to();
         adj.putIfAbsent(v, new TreeSet<>());
@@ -29,7 +31,7 @@ public class EdgeWeightedDigraph<T> {
     }
 
     public Set<DirectedEdge<T>> adj(T v) {
-        return new HashSet<>(adj.get(v));
+        return new HashSet<>(adj.getOrDefault(v, Collections.emptySet()));
     }
 
     public Set<DirectedEdge<T>> edges() {

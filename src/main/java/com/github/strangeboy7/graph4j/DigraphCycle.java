@@ -14,6 +14,7 @@ class DigraphCycle<T> {
     private Stack<T> cycle = new Stack<>();
 
     public DigraphCycle(Digraph<T> digraph) {
+        Objects.requireNonNull(digraph);
         for (T v : digraph.vertex()) {
             marked.putIfAbsent(v, false);
             onStack.putIfAbsent(v, false);
